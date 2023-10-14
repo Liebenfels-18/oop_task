@@ -1,36 +1,49 @@
 package ru.netology.oop;
 
 public class Radio {
+
+
+    private int maxStation = 10;
+    private int minStation;
     private int currentStation;
     private int currentVolume;
+
+
+    public Radio(int maxStation) {
+        this.maxStation = maxStation - 1;
+    }
+
+    public Radio() {
+        maxStation = maxStation - 1;
+    }
 
     public int getCurrentStation() {
         return currentStation;
     }
 
     public void setCurrentStation(int newCurrentStation) {
-        if (newCurrentStation > 9) {
+        if (newCurrentStation > maxStation) {
             return;
         }
-        if (newCurrentStation < 0) {
+        if (newCurrentStation < minStation) {
             return;
         }
         currentStation = newCurrentStation;
     }
 
     public void next() {
-        if (currentStation < 9) {
+        if (currentStation < maxStation) {
             currentStation = currentStation + 1;
         } else {
-            currentStation = 0;
+            currentStation = minStation;
         }
     }
 
     public void prev() {
-        if (currentStation > 0) {
+        if (currentStation > minStation) {
             currentStation = currentStation - 1;
         } else {
-            currentStation = 9;
+            currentStation = maxStation;
         }
     }
 
